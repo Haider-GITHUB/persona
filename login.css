@@ -1,0 +1,105 @@
+
+/* Login Box */
+.center {
+    width: 450px;
+    padding: 20px 0 60px 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+	transform: translate(-50%, -50%);
+    background: rgb(255, 255, 255);
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.150), -3px -3px 10px white;
+    border-radius: 5px;
+}
+.center h2 {
+    text-align: center;
+    color:rgba(0, 0, 0, 0.589);
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(52, 56, 61);
+}
+.center form {
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+form .inpux {
+    position: relative;
+    border-bottom: 1px solid rgba(117, 117, 117, 0.561);
+    margin: 30px 0;
+}
+form input {
+    width: 100%;
+    height: 35px;
+    padding: 0 5px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    background: none;
+
+}
+form label {
+    position:absolute;
+    top: 10%;
+    left: 5px;
+    transition: translateY(-50%);
+    pointer-events: none;
+    transition: 1s;
+}
+/*animation of label */
+form span::before {
+    background: rgb(28, 115, 228);
+    content: "";
+    position: absolute;
+    top: 35px;
+    left: 0px;
+    height: 1px;
+    width: 0%;
+    transition: 3s;
+}
+.inpux input:focus ~ label,
+.inpux input:valid ~ label{
+    top: -20px;
+    color: rgb(28, 115, 228);
+}
+.inpux input:focus ~ span::before,
+.inpux input:valid ~ span::before{
+    width: 100%;
+}
+input[type="submit"]{
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(7, 6, 6, 0.637);
+    height: 40px;
+    width: 100%;
+    border: 1px solid rgb(172, 176, 180);
+    background: rgba(117, 117, 117, 0.561);
+}
+input[type="submit"]:hover{
+    color: white;
+    background: rgba(7, 6, 6, 0.637);
+    transition: 2s cubic-bezier(.59,.12,.41,.91);
+
+}
+
+
+.jhakanaka {
+    position: fixed;
+    bottom: 0px;
+    right: 0;
+    text-align: center;
+    border:rgb(28, 115, 228);
+    background: rgba(80, 152, 245, 0.959);
+    padding: 10px;
+    color: white;
+}
+.jhakanaka a:hover {
+	background:rgb(28, 115, 228);
+	color: #F1EEE6;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgb(68, 125, 199),
+							 0 0 30px rgb(0, 69, 160),
+							 0 0 60px rgb(19, 89, 180),
+							 0 0 120px rgb(28, 115, 228);
+}
