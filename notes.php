@@ -36,6 +36,7 @@ $result = mysqli_query($connect,$query);
             <th>Title</th>
             <th>Body</th>
             <th>Created At</th>
+            <th>Action</th>
         </thead>
         <tbody>
         
@@ -47,6 +48,7 @@ $result = mysqli_query($connect,$query);
                 <td><?=$rows['title']?></td>
                 <td><?=$rows['body']?></td>
                 <td><?=$rows['created_at']?></td>
+                <td><i id="favIcon<?=$rows['id']?>" onclick="addToFav(<?=$rows['id']?>)" style="cursor:pointer; font-size:40px;" class="<?php if($rows['favorite']) echo "fas"; else echo "far"; ?> fa-star"></i></td>
         </tr>
 
 
@@ -65,6 +67,34 @@ $result = mysqli_query($connect,$query);
         <h2>No Notes Inserted Yet!</h2>
 
     <?php }?>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+    <script>
+
+        function addToFav(noteId)
+        {
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "changeFav.php?noteId="+noteId, true);
+            xhttp.send();
+
+
+            let x;
+            x=document.getElementById("favIcon"+noteId);
+            if(x.className == "fas fa-star")
+            {
+                x.className = "far fa-star";
+            }
+            else
+            {
+                x.className = "fas fa-star";
+            }
+        }
+
+    </script>
+
 
 </body>
 </html>
