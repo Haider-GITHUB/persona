@@ -1,4 +1,21 @@
 <?php
+
+session_start();
+
+if(isset($_SESSION['username']) && isset($_SESSION['userEmail']))
+{
+    
+    header('location:dashboard.php');
+    die();
+}
+
+else
+{
+    //continue
+}
+//Session Validation
+
+
     include('database/db_include.php'); //including db
     $error_name = "";
     $error_pass = "";
@@ -86,7 +103,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
-<link href="regis.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/regis.css" rel="stylesheet" type="text/css" media="all" />
 <!-- //Custom Theme files -->
 <!-- web font -->
 <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">

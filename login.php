@@ -1,6 +1,22 @@
-
-
 <?php
+
+session_start();
+
+if(isset($_SESSION['username']) && isset($_SESSION['userEmail']))
+{
+    
+    header('location:dashboard.php');
+    die();
+}
+
+else
+{
+    //continue
+}
+
+
+
+
 include('database/db_include.php'); //including db
 
 $username = "";
@@ -17,6 +33,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
     if($rows = mysqli_fetch_assoc($result))
     {
+        $_SESSION['userEmail'] =$rows['email'];
+        $_SESSION['username']=$rows['username'];
         header("Location: dashboard.php");
         die();
     }
@@ -40,11 +58,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     
     <title>Mojja</title>
     
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     
     <div class="center">
+    <!-- Checker Msg -->
+    <?php if(isset($_SESSION['loginPlz'])) { ?>
+        <h3 style="color:red">
+            <?php 
+                echo $_SESSION['loginPlz'];
+                unset($_SESSION['loginPlz']);
+            
+            ?>
+        </h3>
+    <?php }?>
+    <!-- Checker Msg -->
         <form action="" method="post">
         <h2>Login Form</h2>
             <div class="inpux">
